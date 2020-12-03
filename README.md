@@ -15,8 +15,8 @@
 ![실행이미지](images/result.gif)
 ![실행이미지](images/result.jpg)
 
-
 ## ✅ 프로그래밍 요구사항
+
 - 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, 재입력할 수 있게 한다.
 - 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
 - **자바스크립트 코드 컨벤션을 지키면서 프로그래밍** 한다
@@ -39,13 +39,13 @@
 
 ```javascript
 function Car(name) {
-  this.name = name;
+	this.name = name;
 }
 
 class Car {
-  constructor(name) {
-    this.name = name;
-  }
+	constructor(name) {
+		this.name = name;
+	}
 }
 ```
 
@@ -57,7 +57,6 @@ class Car {
 - `template literal`을 이용해 데이터와 html string을 가독성 좋게 표현한다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
 
-
 ## 📝 미션 저장소 및 진행 요구사항
 
 - 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
@@ -65,3 +64,27 @@ class Car {
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
 
+기능명세
+
+1. Car class
+
+- 이름, 이동거리,  
+  메서드
+- 전진or후진, 비교, 메서드
+
+2. Game class
+
+- 횟수
+  메서드
+- play
+- render
+
+3. elements Class
+
+- carNamesInput
+- racingCountInput
+- carNamesSubmit
+- racingCountSubmit
+  메서드?
+  handleCarNAmesSubmit
+  handleRacingCountSubmit
