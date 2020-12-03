@@ -1,7 +1,13 @@
-export default function RacingCarGame() {
+import domController from "./DomController.js";
+
+class App {
+	constructor() {
+		this.domController = domController;
+	}
+	init() {
+		this.domController.init();
+	}
 }
-// export default class RacingCarGame {
-// }
 
-
-new RacingCarGame();
+const app = new App();
+app.init();
