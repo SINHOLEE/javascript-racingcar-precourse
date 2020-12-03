@@ -1,5 +1,8 @@
+import racingManager from "./RacingManager.js";
+
 class DomController {
 	constructor() {
+		this.racingManager = racingManager;
 		this.$carNamesInput = document.getElementById("car-names-input");
 		this.$carNamesSubmit = document.getElementById("car-names-submit");
 		this.$racingCountInput = document.getElementById("racing-count-input");
@@ -24,6 +27,8 @@ class DomController {
 	 * **/
 	HandleCarNamesSubmit = (e) => {
 		console.log(this.$carNamesInput.value);
+		const carnames = this.$carNamesInput.value;
+		this.racingManager.getCarNames(carnames);
 	};
 	/**
 	 * 결과창 display 설정
