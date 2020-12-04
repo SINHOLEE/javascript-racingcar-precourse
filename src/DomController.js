@@ -13,11 +13,13 @@ class DomController {
 	}
 
 	init = () => {
-		console.log(this.$GameResult.style.display);
-		console.log(this.$racingCount);
 		this.setGameResultVisibility(false);
 		this.setRacingCountVisibility(false);
-		this.$carNamesSubmit.addEventListener("click", this.HandleCarNamesSubmit);
+		this.$carNamesSubmit.addEventListener("click", this.handleCarNamesSubmit);
+		this.$racingCountSubmit.addEventListener(
+			"click",
+			this.handleRacingCountSubmit
+		);
 	};
 	/**
 	 * car names 받는 함수
@@ -25,10 +27,24 @@ class DomController {
 	 * 에러를 뿜으면 그대로, 에러가 없으면 setRacingCountVisibility(true)실행
 	 *
 	 * **/
-	HandleCarNamesSubmit = (e) => {
+	handleRacingCountSubmit = (e) => {
+		const inputRacingCount = this.$racingCountInput.value;
+		console.log({ inputRacingCount });
+		console.log(typeof inputRacingCount);
+		if (this.racingManager.insertRacingCount(inputRacingCount)) {
+			this.setGameResultVisibility(true);
+		}
+		console.log("bbb", racingManager._getRacingCount());
+		this.racingManager.play();
+	};
+
+	handleCarNamesSubmit = (e) => {
 		console.log(this.$carNamesInput.value);
-		const carnames = this.$carNamesInput.value;
-		this.racingManager.getCarNames(carnames);
+		const InputCarnames = this.$carNamesInput.value;
+		if (this.racingManager.insertCarNames(InputCarnames)) {
+			this.setRacingCountVisibility(true);
+		}
+		console.log("aaa", racingManager.getCars());
 	};
 	/**
 	 * 결과창 display 설정
