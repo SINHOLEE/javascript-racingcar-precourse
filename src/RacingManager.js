@@ -5,7 +5,12 @@ class RacingManager {
 		this.cars = null;
 		this.racingCount = null;
 	}
-
+	play = () => {
+		this.cars.play(this._getRacingCount());
+	};
+	_getRacingCount = () => {
+		return this.racingCount;
+	};
 	insertRacingCount = (number) => {
 		if (!this._isInt(number)) {
 			alert("정수만 입력해주세요.");
@@ -26,11 +31,6 @@ class RacingManager {
 
 		return true;
 	};
-
-	play = () => {
-		this.cars.play(this._getRacingCount());
-	};
-
 	_isInt = (inputNumber) => {
 		return (
 			inputNumber % 1 === 0 && parseInt(inputNumber).toString() === inputNumber
@@ -39,9 +39,9 @@ class RacingManager {
 	_setRacingCount = (number) => {
 		this.racingCount = number;
 	};
-
-	_getRacingCount = () => {
-		return this.racingCount;
+	//필요없는 메서드
+	getCars = () => {
+		return this.cars;
 	};
 	insertCarNames = (carNames) => {
 		if (!this._isCarNamesValid(carNames)) {
@@ -52,20 +52,6 @@ class RacingManager {
 		this._initCars(splitedCarNames);
 		return true;
 	};
-	getCars = () => {
-		return this.cars;
-	};
-
-	_initCars = (splitedCarNames) => {
-		if (this.cars === null) {
-			this.cars = new Cars(splitedCarNames);
-			return;
-		}
-		if (confirm("이미 입력받은 데이터가 있습니다. 새로 등록하시겠습니까?")) {
-			this.cars = new Cars(splitedCarNames);
-		}
-	};
-
 	_isCarNamesValid = (carNames) => {
 		const splitedCarNames = this._genSplitedCarNames(carNames);
 		if (!splitedCarNames) {
@@ -77,7 +63,15 @@ class RacingManager {
 		}
 		return true;
 	};
-
+	_genSplitedCarNames = (carNames) => {
+		try {
+			const splitedCarNames = carNames.split(",");
+			return splitedCarNames;
+		} catch (error) {
+			alert("콤마로 나뉘지 않습니다.");
+			return null;
+		}
+	};
 	_isOverFiveCharsAtLeastOne = (cars) => {
 		return cars.some((car) => this._isOverThanFiveCharsOrZero(car));
 	};
@@ -86,13 +80,13 @@ class RacingManager {
 		return carName.length > 5 || carName.length === 0;
 	};
 
-	_genSplitedCarNames = (carNames) => {
-		try {
-			const splitedCarNames = carNames.split(",");
-			return splitedCarNames;
-		} catch (error) {
-			alert("콤마로 나뉘지 않습니다.");
-			return null;
+	_initCars = (splitedCarNames) => {
+		if (this.cars === null) {
+			this.cars = new Cars(splitedCarNames);
+			return;
+		}
+		if (confirm("이미 입력받은 데이터가 있습니다. 새로 등록하시겠습니까?")) {
+			this.cars = new Cars(splitedCarNames);
 		}
 	};
 }
