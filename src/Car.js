@@ -1,21 +1,29 @@
 export default class Car {
-	constructor(name) {
+	constructor(name, distance = 0) {
 		this.name = name;
-		this.distance = 0;
+		this.distance = distance;
 	}
 
 	goOrStop = () => {
-		console.log("goOrStop");
 		const randomIntBtwZeroAndNine = Math.floor(Math.random() * 10);
+		const { name, distance } = { ...this };
 		if (randomIntBtwZeroAndNine >= 4) {
-			this.addOneDistance();
+			const newDistance = this.addOneDistance();
+			return new Car(name, newDistance);
 		}
-		// 불변성 보장 ㄴㄴ 어떻게 해야하지?
-		return this;
-		// console.log(this.name, this.distance);
+		return new Car(name, distance);
 	};
 
 	addOneDistance = () => {
-		this.distance++;
+		return this.distance + 1;
+	};
+	_getDistance = () => {
+		return this.distance;
+	};
+	greaterThan = (car) => {
+		return this._getDistance() - car._getDistance() > 1;
+	};
+	equalTo = (car) => {
+		return this._getDistance() === car._getDistance();
 	};
 }
