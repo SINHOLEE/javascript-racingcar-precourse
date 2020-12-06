@@ -57,13 +57,13 @@ class RacingManager {
 	};
 
 	_initCars = (splitedCarNames) => {
-		if (this.cars !== null) {
-			if (confirm("이미 입력받은 데이터가 있습니다. 새로 등록하시겠습니까?")) {
-				this.cars = new Cars(splitedCarNames);
-			}
+		if (this.cars === null) {
+			this.cars = new Cars(splitedCarNames);
 			return;
 		}
-		this.cars = new Cars(splitedCarNames);
+		if (confirm("이미 입력받은 데이터가 있습니다. 새로 등록하시겠습니까?")) {
+			this.cars = new Cars(splitedCarNames);
+		}
 	};
 
 	_isCarNamesValid = (carNames) => {
