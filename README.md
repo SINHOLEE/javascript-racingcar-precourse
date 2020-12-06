@@ -88,3 +88,18 @@ class Car {
   메서드?
   handleCarNAmesSubmit
   handleRacingCountSubmit
+
+------ 변경사항 -----
+
+1. cars 객체 추가
+
+- getMaxDistanceCar, reportResult메서드 생성을 통해 racingManager에서 관심사 분리
+
+2. game class -> RacingManager class 이름 변경
+
+- 명확한 naming을 위한 변경
+
+todo
+
+1. domControllor -> 각 컴포넌트 별 분리 요구
+   ex) racingCountComponent, carNamesComponent, resultComponent 구분
