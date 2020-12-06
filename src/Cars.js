@@ -22,11 +22,11 @@ export default class Cars {
 	};
 
 	getMaxDistanceCar = () => {
-		const maxCar = this.cars.reduce((prev, car) => {
-			if (prev === null) {
+		const maxCar = this.cars.reduce((prevCar, car) => {
+			if (prevCar === null) {
 				return car;
-			} else if (prev.greaterThan(car)) {
-				return prev;
+			} else if (prevCar.greaterThan(car)) {
+				return prevCar;
 			} else {
 				return car;
 			}
