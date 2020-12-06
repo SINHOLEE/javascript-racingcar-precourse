@@ -103,3 +103,8 @@ todo
 
 1. domControllor -> 각 컴포넌트 별 분리 요구
    ex) racingCountComponent, carNamesComponent, resultComponent 구분
+
+   resultComponent
+
+   - footPrint(과정)
+   - winner(결과)
