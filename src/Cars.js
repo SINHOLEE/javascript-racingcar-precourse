@@ -9,13 +9,17 @@ export default class Cars {
 	 * racingCount 만큼 반복해서 게임실행하는 메서드
 	 * @params racingCount {number}
 	 * **/
+	resetCarsDistanceZero = () => {
+		const resetedCars = this.cars.map((car) => car.resetDistance());
+		this.cars = resetedCars;
+	};
+
 	play = (racingCount) => {
 		for (let i = 0; i < racingCount; i++) {
 			const newCars = this.cars.map((car) => car.goOrStop());
 			this._setCars(newCars);
 		}
-		const result = this.reportResult();
-		const a = 1;
+		const winners = this.filterWinners();
 	};
 	_setCars = (cars) => {
 		this.cars = cars;
@@ -34,7 +38,7 @@ export default class Cars {
 		return maxCar;
 	};
 
-	reportResult = () => {
+	filterWinners = () => {
 		const maxCar = this.getMaxDistanceCar();
 		return this.cars.filter((car) => car.equalTo(maxCar));
 	};

@@ -3,7 +3,7 @@ import Cars from "./Cars.js";
 class RacingManager {
 	constructor() {
 		this.cars = null;
-		this.racingCount = 0;
+		this.racingCount = null;
 	}
 
 	insertRacingCount = (number) => {
@@ -16,7 +16,14 @@ class RacingManager {
 			alert("0보다 큰 정수를 입력해 주세요.");
 			return false;
 		}
+		if (
+			this.racingCount !== null &&
+			confirm("이미 시도할 횟수를 입력했습니다. 새롭게 등록하시겠습니까?")
+		) {
+			this.cars.resetCarsDistanceZero();
+		}
 		this._setRacingCount(parseInt(number));
+
 		return true;
 	};
 

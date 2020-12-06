@@ -3,6 +3,10 @@ export default class Car {
 		this.name = name;
 		this.distance = distance;
 	}
+	resetDistance = () => {
+		const { name } = { ...this };
+		return new Car(name);
+	};
 
 	goOrStop = () => {
 		const randomIntBtwZeroAndNine = Math.floor(Math.random() * 10);
