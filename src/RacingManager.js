@@ -5,8 +5,15 @@ class RacingManager {
 		this.cars = null;
 		this.racingCount = null;
 	}
-	play = () => {
-		this.cars.play(this._getRacingCount());
+	createHTML = () => {
+		let resultHTML = "<div class=result-wrapper>";
+		for (let i = 0; i < this._getRacingCount(); i++) {
+			this.cars.play();
+			resultHTML += this.cars.createHTML();
+		}
+		resultHTML += `<div style='margin-top:10px'>최종우승자 : ${this.cars.filterWinners()}</div>`;
+		resultHTML += "</div>";
+		return resultHTML;
 	};
 	_getRacingCount = () => {
 		return this.racingCount;

@@ -13,14 +13,18 @@ export default class Cars {
 		const resetedCars = this.cars.map((car) => car.resetDistance());
 		this.cars = resetedCars;
 	};
-
-	play = (racingCount) => {
-		for (let i = 0; i < racingCount; i++) {
-			const newCars = this.cars.map((car) => car.goOrStop());
-			this._setCars(newCars);
-		}
-		const winners = this.filterWinners();
+	createHTML = (idx) => {
+		return (
+			`<div class=round-${idx} style='margin-top:30px'>` +
+			this.cars.map((car) => car.createHTML()).join("") +
+			"</div>"
+		);
 	};
+	play = () => {
+		const newCars = this.cars.map((car) => car.goOrStop());
+		this._setCars(newCars);
+	};
+
 	_setCars = (cars) => {
 		this.cars = cars;
 	};
@@ -40,6 +44,8 @@ export default class Cars {
 
 	filterWinners = () => {
 		const maxCar = this.getMaxDistanceCar();
-		return this.cars.filter((car) => car.equalTo(maxCar));
+		return this.cars
+			.filter((car) => car.equalTo(maxCar))
+			.map((car) => car.name);
 	};
 }

@@ -25,9 +25,14 @@ export default class Car {
 		return this.distance;
 	};
 	greaterThan = (car) => {
-		return this._getDistance() - car._getDistance() > 1;
+		return this._getDistance() - car._getDistance() > 0;
 	};
 	equalTo = (car) => {
 		return this._getDistance() === car._getDistance();
+	};
+	createHTML = () => {
+		return `<div class=name-${this.name}>${this.name}:${"-".repeat(
+			this.distance
+		)}</div>`;
 	};
 }

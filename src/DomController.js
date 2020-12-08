@@ -32,7 +32,7 @@ class DomController {
 		if (this.racingManager.insertRacingCount(inputRacingCount)) {
 			this.setGameResultVisibility(true);
 		}
-		this.racingManager.play();
+		this.$GameResult.innerHTML = this.racingManager.createHTML();
 	};
 
 	handleCarNamesSubmit = (e) => {
